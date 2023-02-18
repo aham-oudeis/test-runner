@@ -2,7 +2,6 @@ package value_interpolator
 
 import (
 	"errors"
-	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -14,19 +13,22 @@ func InterpolateValue(value string, context interface{}) ( result interface{}, e
 	result = context;
 
 	for _, key := range path {
-		fmt.Println(result, key)
 		if result == nil {
 			//that means the path cannot be followed
 			return nil, errors.New("invalid path")
 		} else {
 			result = FollowPath(result, key)
+			//this needs to be added so that there is no pointer dereference error
+			if result == nil {
+				//that means the path cannot be followed
+				return nil, errors.New("invalid path")
+			}
 		}
 	}
 
 	return result, nil
 }
 
-//write a function that a string and a regex pattern and returns a slice of strings split by the pattern
 func SplitStringByRegex(str string, pattern string) []string {
 	re := regexp.MustCompile(pattern)
 	return re.Split(str, -1)

@@ -14,13 +14,23 @@ func TestInterpolateValue(t *testing.T) {
 		assertCorrectMessage(t, got.(string), want)
 	})
 
-	t.Run("test interpolating a reference from a nested object", func(t *testing.T) {
+	t.Run("test interpolating a reference from a nested object and an array", func(t *testing.T) {
 		response := map[string]interface{}{};
 		response["body"] = map[string]interface{}{};
 		response["body"].(map[string]interface{})["country"] = []string{"India", "USA"}
 		got, _ := InterpolateValue("body.country[0]", response)
 		want := "India"
 		assertCorrectMessage(t, got.(string), want)
+	})
+
+	//check for error from InterpolateValue
+	t.Run("test interpolating a reference from a nested object with nonexistent path", func(t *testing.T) {
+		response := map[string]interface{}{};
+		response["body"] = map[string]interface{}{};
+		response["body"].(map[string]interface{})["country"] = []string{"India", "USA"}
+		_, err := InterpolateValue("body.country[2]", response)
+		want := "invalid path"
+		assertCorrectMessage(t, err.Error(), want)
 	})
 }
 
