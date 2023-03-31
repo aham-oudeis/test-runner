@@ -1,0 +1,21 @@
+{
+  "assertion": {
+    "property": "status",
+    "comparison": "is equal to",
+    "expected": "200",
+    "id": 34
+  },
+  "response": {
+    "status": "200",
+    "request": {
+      "Assertions": []
+    },
+    "body": {
+      "payload": ""
+    },
+    "headers": {
+      "Accept_Content": "application/json"
+    },
+    "id": 12
+  }
+}

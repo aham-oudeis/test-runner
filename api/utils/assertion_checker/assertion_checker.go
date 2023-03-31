@@ -3,6 +3,8 @@ package assertion_checker
 import (
 	"strconv"
 	"strings"
+	"test-runner/api/entities"
+	"test-runner/api/utils/value_interpolator"
 )
 
 func IsString(b any) bool {
@@ -78,4 +80,14 @@ func IsAssertionPassing(actual, expected any, operator string) bool {
 	} else {
 		return false
 	}
+}
+
+func IsAssertionValid(assertion entities.Assertion, response map[string]interface{}) (bool, any, error) {
+	actual, err := value_interpolator.InterpolateValue(assertion.Property, response)
+
+	if err != nil {
+		return false, actual, err
+	}
+
+	return IsAssertionPassing(actual, assertion.Expected, assertion.Comparison), actual, nil
 }
