@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "method": "GET",
+    "url": "https://restcountries.com/v3.1/alpha?codes=NP",
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": null,
+    "assertions": [
+      {
+        "id": 1,
+        "property": "status",
+        "comparison": "equals to",
+        "expected": "200"
+      },
+      {
+        "id": 2,
+        "property": "latency",
+        "comparison": "less than",
+        "expected": "500"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "method": "GET",
+    "url": "https://restcountries.com/v3.1/alpha?codes=IN",
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": null,
+    "assertions": [
+      {
+        "id": 1,
+        "property": "status",
+        "comparison": "equals to",
+        "expected": "200"
+      },
+      {
+        "id": 2,
+        "property": "latency",
+        "comparison": "less than",
+        "expected": "500"
+      }
+    ]
+  }
+]

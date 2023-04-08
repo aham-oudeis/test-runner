@@ -10,6 +10,11 @@ type Assertion struct {
 }
 
 type Request struct {
+	Id int `json:"id"`
+	Method string `json:"method"`
+	Url string `json:"url"`
+	Headers map[string]interface{} `json:"headers"`
+	Body any `json:"body"`
 	Assertions []Assertion `json:"assertions"`
 }
 
@@ -18,7 +23,7 @@ type Response struct {
 	Status string `json:"status"`
 	Latency int `json:"latency"`
 	Body any `json:"body"`
-	Headers map[string]string `json:"headers"`
+	Headers map[string]interface{} `json:"headers"`
 	Id int `json:"id"`
 }
 
