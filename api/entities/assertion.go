@@ -11,6 +11,7 @@ type Assertion struct {
 
 type Request struct {
 	Id int `json:"id"`
+	OrderId int `json:"orderId"`
 	Method string `json:"method"`
 	Url string `json:"url"`
 	Headers map[string]interface{} `json:"headers"`

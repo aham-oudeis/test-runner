@@ -1,6 +1,31 @@
 [
   {
+    "id": 0,
+    "orderId": 0,
+    "method": "GET",
+    "url": "https://api.nationalize.io?name=Keshar",
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": null,
+    "assertions": [
+      {
+        "id": 1,
+        "property": "status",
+        "comparison": "equals to",
+        "expected": "200"
+      },
+      {
+        "id": 2,
+        "property": "latency",
+        "comparison": "less than",
+        "expected": "500"
+      }
+    ]
+  },
+  {
     "id": 1,
+    "orderId": 1,
     "method": "GET",
     "url": "https://restcountries.com/v3.1/alpha?codes=NP",
     "headers": {
@@ -24,6 +49,7 @@
   },
   {
     "id": 2,
+    "orderId": 1,
     "method": "GET",
     "url": "https://restcountries.com/v3.1/alpha?codes=IN",
     "headers": {
